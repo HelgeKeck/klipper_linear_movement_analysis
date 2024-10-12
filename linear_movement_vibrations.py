@@ -414,7 +414,7 @@ class LinearMovementVibrationsTest:
     @staticmethod
     def _plot_frequency_responses_over_velocity(data, outfile, axis, gcmd):
         try:
-            data = np.array(data)
+            data = np.array(data, dtype=object)
             plt.ioff()
             fig = plt.figure()
             ax = fig.add_subplot(projection='3d')
