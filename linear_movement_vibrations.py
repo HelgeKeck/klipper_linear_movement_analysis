@@ -432,7 +432,9 @@ class LinearMovementVibrationsTest:
             plt.savefig(outfile)
             gcmd.respond_info("output written to {}".format(outfile))
             plt.close('all')
+            
         except Exception as error:
+            print("Custom error message")
             print(error)
 
 
