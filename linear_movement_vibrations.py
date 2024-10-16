@@ -413,29 +413,25 @@ class LinearMovementVibrationsTest:
 
     @staticmethod
     def _plot_frequency_responses_over_velocity(data, outfile, axis, gcmd):
-        try:
-            data = np.array(data, dtype=object)
-            plt.ioff()
-            fig = plt.figure()
-            ax = fig.add_subplot(projection='3d')
-            fig.suptitle("Vibration peak frequencies for axis {}".format(axis))
-            ax.ticklabel_format(style='sci', axis='z', scilimits=(0, 0))
+        data = np.array(data, dtype=object)
+        plt.ioff()
+        fig = plt.figure()
+        ax = fig.add_subplot(projection='3d')
+        fig.suptitle("Vibration peak frequencies for axis {}".format(axis))
+        ax.ticklabel_format(style='sci', axis='z', scilimits=(0, 0))
 
-            for velocity_sample in data:
-                x = velocity_sample[1]
-                y = velocity_sample[2]
-                z = velocity_sample[0]
-                ax.plot(x, y, zs=z, zdir='y')
-            ax.set_xlabel("f in Hz")
-            ax.set_zlabel("relative response")
-            ax.set_ylabel("velocity")
-            plt.savefig(outfile)
-            gcmd.respond_info("output written to {}".format(outfile))
-            plt.close('all')
+        for velocity_sample in data:
+            x = velocity_sample[1]
+            y = velocity_sample[2]
+            z = velocity_sample[0]
+            ax.plot(x, y, zs=z, zdir='y')
+        ax.set_xlabel("f in Hz")
+        ax.set_zlabel("relative response")
+        ax.set_ylabel("velocity")
+        plt.savefig(outfile)
+        gcmd.respond_info("output written to {}".format(outfile))
+        plt.close('all')
             
-        except Exception as error:
-            print("Custom error message")
-            print(error)
 
 
 def load_config(config):
